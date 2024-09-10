@@ -11,7 +11,6 @@ for i in range(n):
             value=1
     if(value==0):
         unique.append(a[i])
-print(unique)
 count=len(unique)
 if(count==0):
     print("null")
