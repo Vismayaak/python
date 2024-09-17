@@ -3,6 +3,7 @@ a=int(input("Enter the number of students:"))
 id=0
 for i in range(a):
     dict={"ID":"","Name":"","Age":"","marks":""}
+    id=int(input("enter your id"))
     Name=input("Enter the name:")
     Age=input("Enter the age:")
     mark1=int(input("mark of subject 1:"))
