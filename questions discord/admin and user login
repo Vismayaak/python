@@ -1,0 +1,53 @@
+users=[]
+def main_menu():
+    while True:
+        print("Main menu")
+        print("1.Registration")
+        print("2.Login")
+        print("3.Exit")
+        choice=input("Enter your choice")
+
+        if choice=='1':
+            register_user()
+        elif choice=='2':
+            login_user()
+        elif choice=='3':
+            print("exit")
+            break
+        else:
+            print("invalid choice")
+def register_user():
+    a={}
+    name=input("Enter a name to register")
+    age=int(input("Enter your age:"))
+    number=input("Enter your phone number:")
+    username=input("Enter a username")
+    
+    for i in users:
+        if i['username']==username:
+           print("username already exists")
+           return
+    password=input("Enter a password")
+    a['name']=name
+    a['age']=age
+    a['number']=number
+    a['username']=username
+    a['password']=password
+    users.append(a)
+    print("registration successful")
+
+def login_user():
+    name=input("Enter username")
+    password=input("Enter your password")
+    flag=0
+    for i in users:
+        if i["username"]==name and i["password"]==password:
+            flag=1
+            print("Login successful")
+main_menu()
+    
+
+
+    
+
+            

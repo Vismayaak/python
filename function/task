@@ -1,0 +1,106 @@
+tasks = []
+
+while True:
+    print("\nMenu")
+    print("1. Add task")
+    print("2. View all tasks")
+    print("3. Update task")
+    print("4. Mark task as completed")
+    print("5. Delete task")
+    print("6. Search task by name")
+    print("7. Exit")
+    
+    try:
+        choice = int(input("Enter your choice: "))
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        continue
+
+    if choice == 1:
+        task = []
+        name = input("Enter the task name: ")
+        description = input("Enter the description: ")
+        due_date = input("Enter due date: ")  # Keep due_date as string for flexibility
+        priority = input("Enter priority level: ")
+        task.append(name)
+        task.append(description)
+        task.append(due_date)
+        task.append(priority)
+        task.append("Not Completed")  # Adding a status to track completion
+        tasks.append(task)
+        print("Task added")
+
+    elif choice == 2:
+        if not tasks:
+            print("No tasks to display.")
+        else:
+            for i, task in enumerate(tasks):
+                print(f"\nTask {i + 1}:")
+                print(f"Name: {task[0]}")
+                print(f"Description: {task[1]}")
+                print(f"Due Date: {task[2]}")
+                print(f"Priority Level: {task[3]}")
+                print(f"Status: {task[4]}")
+
+    elif choice == 3:
+        name_to_update = input("Enter the task name to update: ")
+        updated = False
+        for task in tasks:
+            if task[0] == name_to_update:
+                task[0] = input("Enter the new task name: ")
+                task[1] = input("Enter the new description: ")
+                task[2] = input("Enter the new due date: ")
+                task[3] = input("Enter the new priority level: ")
+                print("Task updated")
+                updated = True
+                break
+        if not updated:
+            print("Task not found")
+
+    elif choice == 4:
+        name_to_complete = input("Enter task name to mark as completed: ")
+        completed = False
+        for task in tasks:
+            if task[0] == name_to_complete:
+                task[4] = "Completed"
+                print("Task marked as completed")
+                completed = True
+                break
+        if not completed:
+            print("Task not found")
+
+    elif choice == 5:
+        name_to_delete = input("Enter the task name to delete: ")
+        task_to_delete = None
+        for task in tasks:
+            if task[0] == name_to_delete:
+                task_to_delete = task
+                break
+        if task_to_delete:
+            tasks.remove(task_to_delete)
+            print("Task deleted successfully")
+        else:
+            print("Task not found")
+
+    elif choice == 6:
+        name_to_search = input("Enter task name to search: ")
+        found = False
+        for task in tasks:
+            if task[0] == name_to_search:
+                print("\nTask Details:")
+                print(f"Name: {task[0]}")
+                print(f"Description: {task[1]}")
+                print(f"Due Date: {task[2]}")
+                print(f"Priority Level: {task[3]}")
+                print(f"Status: {task[4]}")
+                found = True
+                break
+        if not found:
+            print("Task not found")
+
+    elif choice == 7:
+        print("Exiting...")
+        break
+
+    else:
+        print("Invalid choice. Please enter a number between 1 and 7.")
